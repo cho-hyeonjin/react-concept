@@ -1,0 +1,28 @@
+.profile {
+  position: relative;
+  border-radius: 100%;
+  padding: 1rem;
+  background-color: #ebebeb;
+  border: 1px solid lightslategray;
+  border-radius: 1em;
+  width: 15em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+.new {
+  position: absolute;
+  left: 70%;
+  top: 10%;
+  background-color: aquamarine;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
