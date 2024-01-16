@@ -16,6 +16,13 @@
   height: 200px;
   border-radius: 100%;
 }
+
+.avatar {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
 .new {
   position: absolute;
   left: 70%;
