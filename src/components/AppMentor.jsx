@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import "./AppMentor.css";
 
 export default function AppMentor() {
@@ -19,7 +19,7 @@ export default function AppMentor() {
           {person.name} 님은 {person.title} 입니다.
         </h1>
         <p className="title">
-          {person.name} 님의 멘토는 {person.mentor.name}{" "}
+          {person.name} 님의 멘토는 {person.mentor.name}
           {`(${person.mentor.title})`}
           입니다.
         </p>
@@ -37,6 +37,10 @@ export default function AppMentor() {
         <button
           onClick={() => {
             const title = prompt(`멘토의 타이틀은?`);
+            setPerson((person) => ({
+              ...person,
+              mentor: { ...person.mentor, title: title },
+            }));
           }}
         >
           멘토 타이틀 바꾸기
