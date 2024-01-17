@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import "./AppMentor.css";
 
 export default function AppMentor() {
