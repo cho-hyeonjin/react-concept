@@ -18,9 +18,9 @@ export default function AppMentors() {
   return (
     <>
       <h1>
-        {person.name}는 {person.title}
+        {person.name} 님은 {person.title} 입니다.
       </h1>
-      <p>{person.name}의 멘토는:</p>
+      <p>{person.name} 님의 멘토:</p>
       <ul>
         {person.mentors.map((mentor, index) => (
           <li key={index}>
@@ -43,7 +43,42 @@ export default function AppMentors() {
           }));
         }}
       >
-        멘토 이름 바꾸기
+        멘토 이름 변경
+      </button>
+      <button>멘토 타이틀 변경</button>
+      <button
+        onClick={() => {
+          const addMentorName = prompt(
+            `추가하고 싶은 멘토의 이름을 입력해 주세요.`
+          );
+          const addMentorTitle = prompt(
+            `추가하고 싶은 멘토의 직함을 입력해 주세요.`
+          );
+          setPerson((person) => ({
+            ...person,
+            mentors: [
+              ...person.mentors,
+              { name: addMentorName, title: addMentorTitle },
+            ],
+          }));
+        }}
+      >
+        멘토 추가하기
+      </button>
+      <button
+        onClick={() => {
+          const deleteMentorName = prompt(
+            `삭제하고 싶은 멘토의 이름을 입력해 주세요.`
+          );
+          setPerson((person) => ({
+            ...person,
+            mentors: person.mentors.filter(
+              (mentor) => mentor.name !== deleteMentorName
+            ),
+          }));
+        }}
+      >
+        멘토 삭제하기
       </button>
     </>
   );
