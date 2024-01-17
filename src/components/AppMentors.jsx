@@ -82,6 +82,7 @@ export default function AppMentors() {
           </li>
         ))}
       </ul>
+      {/* 분리해둔 UI 로직 함수 사용 */}
       <button onClick={handleUpdateMentorName}>멘토 이름 변경</button>
       <button onClick={handleUpdateMentorTitle}>멘토 타이틀 변경</button>
       <button onClick={handleAdd}>멘토 추가하기</button>
