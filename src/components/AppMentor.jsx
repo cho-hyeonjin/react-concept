@@ -1,6 +1,5 @@
 import React from "react";
-import { useState, useCallback } from "react";
-import "./AppMentor.css";
+import { useState } from "react";
 
 export default function AppMentor() {
   const [person, setPerson] = useState({
