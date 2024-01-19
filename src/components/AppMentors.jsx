@@ -1,72 +1,44 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
+import personReducer from "./reducer/personReducer";
 
 // 상태를 전역으로 빼서 분리
 const initialPerson = {
   name: "조현진",
-  title: "주니어개발자",
+  title: "FE주니어개발자",
   mentors: [
     {
       name: "스폰지밥",
-      title: "게발자",
+      title: "BE시니어개발자",
     },
     {
       name: "제임스",
-      title: "시니어개발자",
+      title: "FE시니어개발자",
     },
   ],
 };
 
 export default function AppMentors() {
-  const [person, setPerson] = useState(initialPerson);
+  // setState 대신 dispatch함수로 reducer의 state변경 로직을 실행시킨다.
+  const [person, dispatch] = useReducer(personReducer, initialPerson);
+
   // UI변경 로직 함수로 분리
+  // BUT!! 여전한 문제 1. 컴포넌트 내부에 상태(객체)를 갱신하는 로직이 섞여 있다.
   const handleUpdateMentorName = () => {
-    const prevMentorName = prompt(`누구의 이름을 바꾸고 싶은가요?`);
-    const currMentorName = prompt(`이름을 무엇으로 바꾸고 싶나요?`);
-    setPerson((person) => ({
-      ...person,
-      mentors: person.mentors.map((mentor) => {
-        if (mentor.name === prevMentorName) {
-          return { ...mentor, name: currMentorName };
-        }
-        return mentor;
-      }),
-    }));
+    const prev = prompt(`누구의 이름을 바꾸고 싶은가요?`);
+    const current = prompt(`이름을 무엇으로 바꾸고 싶나요?`);
+    // 여전한 문제 2. 어떤 컴포넌트의 상태 갱신 로직을 다른 컴포넌트에서 재사용할 수 없다.
+    dispatch({ type: "updated", prev, current });
   };
-  const handleUpdateMentorTitle = () => {
-    const mentorName = prompt(`직함을 바꾸고 싶은 멘토의 이름은 무엇인가요?`);
-    const currMentorTitle = prompt(`직함을 무엇으로 바꾸고 싶나요?`);
-    setPerson((person) => ({
-      ...person,
-      mentors: person.mentors.map((mentor) => {
-        if (mentor.name === mentorName) {
-          return { ...mentor, title: currMentorTitle };
-        }
-        return mentor;
-      }),
-    }));
-  };
+
   const handleAdd = () => () => {
-    const addMentorName = prompt(`추가하고 싶은 멘토의 이름을 입력해 주세요.`);
-    const addMentorTitle = prompt(`추가하고 싶은 멘토의 직함을 입력해 주세요.`);
-    setPerson((person) => ({
-      ...person,
-      mentors: [
-        ...person.mentors,
-        { name: addMentorName, title: addMentorTitle },
-      ],
-    }));
+    const name = prompt(`추가하고 싶은 멘토의 이름을 입력해 주세요.`);
+    const title = prompt(`추가하고 싶은 멘토의 직함을 입력해 주세요.`);
+    dispatch({ type: "added", name, title });
   };
 
   const handleDelete = () => {
-    const deleteMentorName = prompt(
-      `삭제하고 싶은 멘토의 이름을 입력해 주세요.`
-    );
-    setPerson((person) => ({
-      ...person,
-      mentors: person.mentors.filter(
-        (mentor) => mentor.name !== deleteMentorName
-      ),
-    }));
+    const name = prompt(`삭제하고 싶은 멘토의 이름을 입력해 주세요.`);
+    dispatch({ type: "delete", name });
   };
 
   return (
@@ -84,7 +56,6 @@ export default function AppMentors() {
       </ul>
       {/* 분리해둔 UI 로직 함수 사용 */}
       <button onClick={handleUpdateMentorName}>멘토 이름 변경</button>
-      <button onClick={handleUpdateMentorTitle}>멘토 타이틀 변경</button>
       <button onClick={handleAdd}>멘토 추가하기</button>
       <button onClick={handleDelete}>멘토 삭제하기</button>
     </>
