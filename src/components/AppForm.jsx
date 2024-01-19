@@ -4,6 +4,7 @@ export default function AppForm() {
   const [form, setForm] = useState({ name: "", email: "" });
   const handleSubmit = (e) => {
     e.preventDefault(); // submit 이벤트는 새로고침이 기본 설정값이기 때문에 새로고침을 원하지 않으면 e.preventDefault()를 해줘야 한다.
+    console.log(form);
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
