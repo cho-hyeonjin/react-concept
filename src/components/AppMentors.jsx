@@ -22,11 +22,9 @@ export default function AppMentors() {
   const [person, dispatch] = useReducer(personReducer, initialPerson);
 
   // UI변경 로직 함수로 분리
-  // BUT!! 여전한 문제 1. 컴포넌트 내부에 상태(객체)를 갱신하는 로직이 섞여 있다.
   const handleUpdateMentorName = () => {
     const prev = prompt(`누구의 이름을 바꾸고 싶은가요?`);
     const current = prompt(`이름을 무엇으로 바꾸고 싶나요?`);
-    // 여전한 문제 2. 어떤 컴포넌트의 상태 갱신 로직을 다른 컴포넌트에서 재사용할 수 없다.
     dispatch({ type: "updated", prev, current });
   };
 
