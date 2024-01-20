@@ -5,9 +5,10 @@ import ReactDOM from "react-dom/client";
 // import AppMentors from "./components/AppMentors.jsx";
 // import AppMentorsImmer from "./components/AppMentorsImmer";
 // import AppForm from "./components/AppForm";
-import AppWrap from "./components/AppWrap";
+// import AppWrap from "./components/AppWrap";
+// import AppTheme from "./components/AppTheme";
+import AppMentorsButton from "./components/AppMontorsButton";
 import "./index.css";
-import AppTheme from "./components/AppTheme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,6 +19,7 @@ root.render(
     {/* <AppMentorsImmer /> */}
     {/* <AppForm /> */}
     {/* <AppWrap /> */}
-    <AppTheme />
+    {/* <AppTheme /> */}
+    <AppMentorsButton />
   </React.StrictMode>
 );

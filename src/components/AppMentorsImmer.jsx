@@ -40,7 +40,7 @@ export default function AppMentorsImmer() {
   return (
     <div>
       <h1>
-        {person.name}는 {person.title}
+        {person.name}은 {person.title}
       </h1>
       <p>{person.name}의 멘토는:</p>
       <ul>
