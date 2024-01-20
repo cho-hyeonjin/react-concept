@@ -7,7 +7,8 @@ import ReactDOM from "react-dom/client";
 // import AppForm from "./components/AppForm";
 // import AppWrap from "./components/AppWrap";
 // import AppTheme from "./components/AppTheme";
-import AppMentorsButton from "./components/AppMontorsButton";
+// import AppMentorsButton from "./components/AppMontorsButton";
+import Products from "./basic/components/Products";
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -20,6 +21,7 @@ root.render(
     {/* <AppForm /> */}
     {/* <AppWrap /> */}
     {/* <AppTheme /> */}
-    <AppMentorsButton />
+    {/* <AppMentorsButton /> */}
+    <Products />
   </React.StrictMode>
 );
