@@ -7,6 +7,7 @@ import ReactDOM from "react-dom/client";
 // import AppForm from "./components/AppForm";
 import AppWrap from "./components/AppWrap";
 import "./index.css";
+import AppTheme from "./components/AppTheme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +17,7 @@ root.render(
     {/* <AppMentors /> */}
     {/* <AppMentorsImmer /> */}
     {/* <AppForm /> */}
-    <AppWrap />
+    {/* <AppWrap /> */}
+    <AppTheme />
   </React.StrictMode>
 );
