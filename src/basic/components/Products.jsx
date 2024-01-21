@@ -1,28 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import useProducts from "../../hooks/use-products";
 
 export default function Products() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
-  const [count, setCount] = useState(0);
-  const [products, setProducts] = useState([]);
   const [checked, setChecked] = useState(false);
-  const handleChange = () => setChecked((prev) => !prev);
+  const [loading, error, products] = useProducts({ salesOnly: checked });
 
-  useEffect(() => {
-    setLoading(true);
-    setError(undefined);
-    fetch(`data/${checked ? "sale_" : ""}products.json`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("✅데이터 받음");
-        setProducts(data);
-      })
-      .catch((error) => setError("에러 발생!!"))
-      .finally(() => setLoading(false));
-    return () => {
-      console.log("🧹클리어✨");
-    };
-  }, [checked]);
+  const handleChange = () => setChecked((prev) => !prev);
+  const [count, setCount] = useState(0);
 
   if (loading) return <p>Loading...</p>;
 
@@ -38,8 +22,8 @@ export default function Products() {
           id="checkebox"
         />
         <label htmlFor="checkebox">Show Only HOT SALE🔥</label>
-        {products.map((product) => (
-          <li key={product.id}>
+        {products.map((product, idx) => (
+          <li key={idx}>
             <article>
               <h3>{product.name}</h3>
               <p>{product.price}</p>
