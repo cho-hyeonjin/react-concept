@@ -4,9 +4,7 @@ import useProducts from "../../hooks/use-products";
 export default function Products() {
   const [checked, setChecked] = useState(false);
   const [loading, error, products] = useProducts({ salesOnly: checked });
-
   const handleChange = () => setChecked((prev) => !prev);
-  const [count, setCount] = useState(0);
 
   if (loading) return <p>Loading...</p>;
 
@@ -14,16 +12,16 @@ export default function Products() {
 
   return (
     <>
+      <input
+        id="checkbox"
+        type="checkbox"
+        value={checked}
+        onChange={handleChange}
+      />
+      <label htmlFor="checkbox">Show Only 🔥 Sale</label>
       <ul>
-        <input
-          type="checkbox"
-          value={checked}
-          onChange={handleChange}
-          id="checkebox"
-        />
-        <label htmlFor="checkebox">Show Only HOT SALE🔥</label>
-        {products.map((product, idx) => (
-          <li key={idx}>
+        {products.map((product) => (
+          <li key={product.id}>
             <article>
               <h3>{product.name}</h3>
               <p>{product.price}</p>
@@ -31,7 +29,6 @@ export default function Products() {
           </li>
         ))}
       </ul>
-      <button onClick={() => setCount((prev) => prev + 1)}>{count}</button>
     </>
   );
 }
